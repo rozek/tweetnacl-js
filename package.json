@@ -3,12 +3,14 @@
   "version": "1.0.3",
   "description": "Port of TweetNaCl cryptographic library to JavaScript",
   "main": "nacl-fast.js",
+  "module": "nacl-fast.esm.js",
   "types": "nacl.d.ts",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "build": "uglifyjs nacl.js -c -m -o nacl.min.js && uglifyjs nacl-fast.js -c -m -o nacl-fast.min.js",
+  	"build": "cp nacl.js nacl.esm.js && echo '\nexport default nacl;' >> nacl.esm.js && cp nacl-fast.js nacl-fast.esm.js && echo '\nexport default nacl;' >> nacl-fast.esm.js",
+    "build-iife": "uglifyjs nacl.js -c -m -o nacl.min.js && uglifyjs nacl-fast.js -c -m -o nacl-fast.min.js",
     "test-node": "tape test/*.js | faucet",
     "test-node-all": "make -C test/c && tape test/*.js test/c/*.js | faucet",
     "build-test-browser": "browserify test/browser/init.js test/*.js | uglifyjs -c -m -o test/browser/_bundle.js 2>/dev/null && browserify test/browser/init.js test/*.quick.js | uglifyjs -c -m -o test/browser/_bundle-quick.js 2>/dev/null",

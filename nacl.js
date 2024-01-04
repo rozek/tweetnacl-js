@@ -1,5 +1,11 @@
 var nacl = {}
-;(function(nacl) {
+;(function(root, f) {
+  'use strict';
+  if (typeof module !== 'undefined' && module.exports) module.exports = f(nacl);
+  else if (typeof root === 'undefined') f(nacl);
+  else if (root.nacl) Object.assign(root.nacl,f(nacl));
+  else root.nacl = f(nacl);
+}(this, function(nacl) {
 'use strict';
 
 // Ported in 2014 by Dmitry Chestnykh and Devi Mandiri.
@@ -1176,9 +1182,5 @@ nacl.setPRNG = function(fn) {
   }
 })();
 
-})(typeof module !== 'undefined' && module.exports
-  ? module.exports 
-  : typeof self !== 'undefined' 
-    ? (self.nacl = self.nacl || {}) 
-    : nacl
-);
+  return nacl
+}));

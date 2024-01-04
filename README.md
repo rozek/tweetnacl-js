@@ -4,7 +4,7 @@ TweetNaCl.js
 Port of [TweetNaCl](http://tweetnacl.cr.yp.to) / [NaCl](http://nacl.cr.yp.to/)
 to JavaScript for modern browsers and Node.js. Public domain.
 
-> **Nota bene**: this repository is basically a copy of the [original](https://github.com/dchest/tweetnacl-js) with some changes from pull request [#186](https://github.com/dchest/tweetnacl-js/pull/186) which make this module ES6 compatible and allows you to `import * as nacl from 'nacl-fast.esm.js'`.
+> **Nota bene**: this repository is basically a copy of the [original](https://github.com/dchest/tweetnacl-js) with some changes inspired by pull request [#186](https://github.com/dchest/tweetnacl-js/pull/186) which make this module ES6 compatible and allows you to `import nacl from 'nacl.esm.js'` or `import nacl from 'nacl-fast.esm.js'`, resp.
 >
 > As a consequence, `npm run build` will now build ESM modules, while `npm run build-iife` has to be used in order to build the old version of this module.
 
